@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{listings}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+
+\begin{document}
+
+\begin{center}
+    \LARGE \textbf{CS Assignment: Predicting Mango Types with Neural Nets} \\
+    \vspace{0.5cm}
+    \large Using Length, Mass, and Both as Features
+\end{center}
+
+\section*{Objective}
+The goal of this assignment is to build intuition for neural networks by working with a simple mango dataset.  
+Your dataset contains three columns:
+
+\begin{itemize}
+    \item \texttt{length} (cm)
+    \item \texttt{mass} (grams)
+    \item \texttt{type} (categorical label, e.g., mango variety)
+\end{itemize}
+
+You will design Python functions that attempt to predict mango type using:
+\begin{enumerate}
+    \item Length only
+    \item Mass only
+    \item Both length and mass
+\end{enumerate}
+
+---
+
+\section*{File Structure}
+Your project should follow this structure:
+\begin{verbatim}
+project/
+  ├── data/
+  │     └── mango_data.csv
+  ├── src/
+  │     ├── dataset_loader.py
+  │     ├── mango_model.py
+  │     └── train.py
+  └── README.md
+\end{verbatim}
+
+---
+
+\section*{Part 1: Dataset Loader}
+In \texttt{dataset\_loader.py}, write a function to load the CSV.
+
+\begin{lstlisting}[language=Python]
+def load_dataset(path: str = "data/mango_data.csv"):
+    # read csv
+    # extract X (features) and y (labels)
+    return X, y
+\end{lstlisting}
+
+---
+
+\section*{Part 2: Prediction with Length Only}
+In \texttt{mango\_model.py}, create a function to predict mango type using only length.  
+It should apply a weighted sum, bias, and an activation function (e.g., sigmoid).
+
+\begin{lstlisting}[language=Python]
+def mango_predict_length(length, weight, bias):
+    # weighted sum
+    # apply activation
+    # return prediction
+\end{lstlisting}
+
+---
+
+\section*{Part 3: Prediction with Mass Only}
+Repeat the process, but use only mass as the input.
+
+\begin{lstlisting}[language=Python]
+def mango_predict_mass(mass, weight, bias):
+    # weighted sum
+    # apply activation
+    # return prediction
+\end{lstlisting}
+
+---
+
+\section*{Part 4: Prediction with Length + Mass}
+Extend to accept both features together.
+
+\begin{lstlisting}[language=Python]
+def mango_predict_two_features(length, mass, weight1, weight2, bias):
+    # weighted sum with two inputs
+    # apply activation
+    # return prediction
+\end{lstlisting}
+
+---
+
+\section*{Part 5: Loss Function}
+Implement Mean Squared Error (MSE) in \texttt{mango\_model.py}.
+
+\begin{lstlisting}[language=Python]
+def compute_loss(y_true, y_pred):
+    # implement MSE
+    return loss
+\end{lstlisting}
+
+---
+
+\section*{Part 6: Training Script}
+In \texttt{train.py}, write a loop that:
+\begin{enumerate}
+    \item Initializes weights and bias
+    \item Loops over the dataset
+    \item Runs predictions
+    \item Computes loss
+    \item Adjusts weights using gradient descent
+    \item Prints loss each epoch
+\end{enumerate}
+
+---
+
+\section*{Deliverables}
+\begin{itemize}
+    \item \texttt{mango\_data.csv}
+    \item Functions:
+    \begin{itemize}
+        \item \texttt{mango\_predict\_length()}
+        \item \texttt{mango\_predict\_mass()}
+        \item \texttt{mango\_predict\_two\_features()}
+        \item \texttt{compute\_loss()}
+    \end{itemize}
+    \item \texttt{train.py} script that runs training
+\end{itemize}
+
+---
+
+\section*{Stretch Goals}
+\begin{itemize}
+    \item Normalize your inputs (scale length/mass before using them)
+    \item Add plots of the loss curve
+    \item Implement a softmax classifier for multiple mango types
+\end{itemize}
+
+\end{document}
